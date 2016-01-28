@@ -5,7 +5,7 @@ php:
  - php 5.4.3
 install: 
  - sudo apt-get update || true
- - sudo apt-get install autopoint gcc automake libcurl-devel mysql-server mysql-devel
+ - sudo apt-get install autopoint gcc automake libcurl mysql-server libmysqld-dev
 script:
  - ./configure --prefix=/usr/local/zabbix --enable-server --enable-agent --with-mysql
  - make
