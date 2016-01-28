@@ -1398,6 +1398,8 @@ static void	dc_add_history_uint(ZBX_DC_HISTORY *history, int history_num)
 
 		zbx_db_insert_add_values(&db_insert, history[i].itemid, history[i].ts.sec, history[i].ts.ns,
 				history[i].value.ui64);
+		printf("%s\n", &db_insert, history[i].itemid, history[i].ts.sec, history[i].ts.ns,
+				history[i].value.ui64);
 	}
 
 	zbx_db_insert_execute(&db_insert);
