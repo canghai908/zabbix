@@ -1,0 +1,12 @@
+language: c
+os:
+ - linux
+php:
+ - php 5.4.3
+install: 
+ - sudo apt-get update || true
+ - sudo apt-get install autopoint gcc automake libcurl-devel mysql-server mysql-devel
+script:
+ - ./configure --prefix=/usr/local/zabbix --enable-server --enable-agent --with-mysql
+ - make
+ - make install
