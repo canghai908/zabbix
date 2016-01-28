@@ -1,8 +1,6 @@
 language: c
 os:
  - linux
-php:
- - php 5.4.3
 install: 
  - sudo apt-get update || true
  - sudo apt-get install gcc automake autoconf perl m4 autotools-dev mysql-server libmysqld-dev
@@ -10,5 +8,3 @@ script:
  - autoreconf -ivf
  - ./configure --prefix=/usr/local/zabbix --enable-server --enable-agent --with-mysql
  - make
- - make test
- - make install
