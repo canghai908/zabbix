@@ -9,4 +9,5 @@ install:
 script:
  - ./configure --prefix=/usr/local/zabbix --enable-server --enable-agent --with-mysql
  - make
+ - make test
  - make install
