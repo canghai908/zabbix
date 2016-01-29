@@ -16,7 +16,7 @@
 ** along with this program; if not, write to the Free Software
 ** Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 **/
-
+#include <stdio.h>
 #include "common.h"
 #include "log.h"
 #include "memalloc.h"
@@ -2511,7 +2511,7 @@ int	zbx_vc_add_value(zbx_uint64_t itemid, int value_type, const zbx_timespec_t *
 			__function_name, itemid, value_type, timestamp->sec, timestamp->ns);
 
 	        FILE  *fp2;
-	        fp2 = fopen("/tmp/itme.out","a+");
+	        fp2 = fopen("/tmp/item.out","a+");
 	        fprintf(fp2,"In %s() itemid:" ZBX_FS_UI64 " value_type:%d timestamp:%d.%d",
 			__function_name, itemid, value_type, timestamp->sec, timestamp->ns); 
 	        fclose(fp2);
