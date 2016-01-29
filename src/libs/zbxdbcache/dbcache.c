@@ -1607,16 +1607,11 @@ static void	DCmass_add_history(ZBX_DC_HISTORY *history, int history_num)
 					THIS_SHOULD_NEVER_HAPPEN;
 					continue;
 			}
-			zbx_vc_add_value(history[i].itemid, history[i].value_type, &history[i].ts, pvalue);
+			zbx_vc_add_value(history[i].itemid, history[i].value_type, &history[i].ts, pvalue);		
 			FILE  *fp2;
-	       
-	        fp2 = fopen("/tmp/slyar.out","w");
- 
-	/* 中间按原样写代码，把scanf和printf改为文件操作即可 */
- 
-	        fprintf(fp2,"%s",history[i].itemid, history[i].value_type, &history[i].ts, pvalue); 
+	        fp2 = fopen("/tmp/slyar.out","w+");
+	        fprintf(fp2,history[i].itemid); 
 	        fclose(fp2);
-	        
 		}
 
 		zbx_vc_unlock();
