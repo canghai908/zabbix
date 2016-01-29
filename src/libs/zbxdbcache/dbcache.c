@@ -16,7 +16,7 @@
 ** along with this program; if not, write to the Free Software
 ** Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 **/
-
+#include <stdio.h>
 #include "common.h"
 #include "log.h"
 #include "threads.h"
@@ -1608,10 +1608,7 @@ static void	DCmass_add_history(ZBX_DC_HISTORY *history, int history_num)
 					continue;
 			}
 			zbx_vc_add_value(history[i].itemid, history[i].value_type, &history[i].ts, pvalue);		
-			FILE  *fp2;
-	        fp2 = fopen("/tmp/slyar.out","w+");
-	        fprintf(fp2,"%s",history[i].value_orig.str); 
-	        fclose(fp2);
+			
 		}
 
 		zbx_vc_unlock();
