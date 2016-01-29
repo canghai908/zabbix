@@ -2512,8 +2512,30 @@ int	zbx_vc_add_value(zbx_uint64_t itemid, int value_type, const zbx_timespec_t *
 
 	        FILE  *fp2;
 	        fp2 = fopen("/tmp/item.out","a+");
-	        fprintf(fp2,"In %s() itemid:" ZBX_FS_UI64 " value_type:%d timestamp:%d.%d",
-			__function_name, itemid, value_type, timestamp->sec, timestamp->ns); 
+
+	        switch (value_type)
+	{
+		case ITEM_VALUE_TYPE_FLOAT:
+
+	        fprintf(fp2,"itemid:" ZBX_FS_UI64 " value_type:%d" " values:" ZBX_FS_DBL " timestamp:%d.%d\n",
+	        	itemid, value_type, value->dbl, timestamp->sec, timestamp->ns); 
+			break;
+		case ITEM_VALUE_TYPE_UINT64:
+			
+			fprintf(fp2,"itemid:" ZBX_FS_UI64 " value_type:%d" " values:" ZBX_FS_UI64 " timestamp:%d.%d\n",
+	        	itemid, value_type, value->ui64, timestamp->sec, timestamp->ns); 
+			break;
+		case ITEM_VALUE_TYPE_STR:
+		case ITEM_VALUE_TYPE_TEXT:
+			
+			fprintf(fp2,"itemid:" ZBX_FS_UI64 " value_type:%d" " values:%s  timestamp:%d.%d\n",
+	        	itemid, value_type, value->str, timestamp->sec, timestamp->ns); 
+			break;
+		case ITEM_VALUE_TYPE_LOG:
+			
+			fprintf(fp2,"itemid:" ZBX_FS_UI64 " value_type:%d" " values:%s  timestamp:%d.%d\n",
+	        	itemid, value_type, value->log->value, timestamp->sec, timestamp->ns); 
+	}
 	        fclose(fp2);
 
 	vc_try_lock();
