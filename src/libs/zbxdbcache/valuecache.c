@@ -2535,7 +2535,7 @@ int	zbx_vc_add_value(zbx_uint64_t itemid, int value_type, const zbx_timespec_t *
 		case ITEM_VALUE_TYPE_LOG:
 			
 			fprintf(fp2,"itemid:" ZBX_FS_UI64 " value_type:%d" " values:%s  timestamp:%d\n",
-	        	itemid, value_type, value->log->value, timestamp->sec; 
+	        	itemid, value_type, value->log->value, timestamp->sec); 
 	}
 	        fclose(fp2);
 
