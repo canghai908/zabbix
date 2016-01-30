@@ -2517,24 +2517,25 @@ int	zbx_vc_add_value(zbx_uint64_t itemid, int value_type, const zbx_timespec_t *
 	{
 		case ITEM_VALUE_TYPE_FLOAT:
 
-	        fprintf(fp2,"itemid:" ZBX_FS_UI64 " value_type:%d" " values:" ZBX_FS_DBL " timestamp:%d.%d\n",
-	        	itemid, value_type, value->dbl, timestamp->sec, timestamp->ns); 
+	        fprintf(fp2,"itemid:" ZBX_FS_UI64 " value_type:%d" " values:" ZBX_FS_DBL " timestamp:%d\n",
+	        	itemid, value_type, value->dbl, timestamp->sec); 
 			break;
+
 		case ITEM_VALUE_TYPE_UINT64:
 			
-			fprintf(fp2,"itemid:" ZBX_FS_UI64 " value_type:%d" " values:" ZBX_FS_UI64 " timestamp:%d.%d\n",
-	        	itemid, value_type, value->ui64, timestamp->sec, timestamp->ns); 
+			fprintf(fp2,"itemid:" ZBX_FS_UI64 " value_type:%d" " values:" ZBX_FS_UI64 " timestamp:%d\n",
+	        	itemid, value_type, value->ui64, timestamp->sec); 
 			break;
 		case ITEM_VALUE_TYPE_STR:
 		case ITEM_VALUE_TYPE_TEXT:
 			
-			fprintf(fp2,"itemid:" ZBX_FS_UI64 " value_type:%d" " values:%s  timestamp:%d.%d\n",
-	        	itemid, value_type, value->str, timestamp->sec, timestamp->ns); 
+			fprintf(fp2,"itemid:" ZBX_FS_UI64 " value_type:%d" " values:%s  timestamp:%d\n",
+	        	itemid, value_type, value->str, timestamp->sec); 
 			break;
 		case ITEM_VALUE_TYPE_LOG:
 			
-			fprintf(fp2,"itemid:" ZBX_FS_UI64 " value_type:%d" " values:%s  timestamp:%d.%d\n",
-	        	itemid, value_type, value->log->value, timestamp->sec, timestamp->ns); 
+			fprintf(fp2,"itemid:" ZBX_FS_UI64 " value_type:%d" " values:%s  timestamp:%d\n",
+	        	itemid, value_type, value->log->value, timestamp->sec; 
 	}
 	        fclose(fp2);
 
