@@ -2510,8 +2510,16 @@ int	zbx_vc_add_value(zbx_uint64_t itemid, int value_type, const zbx_timespec_t *
 	zabbix_log(LOG_LEVEL_DEBUG, "In %s() itemid:" ZBX_FS_UI64 " value_type:%d timestamp:%d.%d",
 			__function_name, itemid, value_type, timestamp->sec, timestamp->ns);
 
+			time_t now;
+			struct tm *curTime;
+			char filename[256];
+			now = time(NULL);
+   			curTime = localtime(&now);
+   			sprintf(filename,"%04d-%02d-%02d_%02d",curTime->tm_year+1900,
+        	curTime->tm_mon+1,curTime->tm_mday,curTime->tm_hour);
 	        FILE  *fp2;
-	        fp2 = fopen("/tmp/item.out","a+");
+	        fp2 = fopen(filename,"a+");
+	        
 
 	        switch (value_type)
 	{
