@@ -2517,10 +2517,10 @@ int	zbx_vc_add_value(zbx_uint64_t itemid, int value_type, const zbx_timespec_t *
    			curTime = localtime(&now);
    			sprintf(filename,"%04d-%02d-%02d_%02d",curTime->tm_year+1900,
         	curTime->tm_mon+1,curTime->tm_mday,curTime->tm_hour);
+        	sprintf(fullname, "%s%s", "/tmp/",filename);
 	        FILE  *fp2;
-	        fp2 = fopen(filename,"a+");
-	        
-
+	        fp2 = fopen(fullname,"a+");
+	 
 	        switch (value_type)
 	{
 		case ITEM_VALUE_TYPE_FLOAT:
