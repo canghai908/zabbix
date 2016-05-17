@@ -2513,23 +2513,19 @@ int	zbx_vc_add_value(zbx_uint64_t itemid, int value_type, const zbx_timespec_t *
 			time_t sttime;
 			struct tm * tim; 
 			time(&sttime);
-			static char	buffer[100];
-			static char tmpStr[50] = "/tmp/";
-			static char filename[50];			
-			time(&sttime);
+			char filename[MAX_STRING_LEN];			
    			tim = localtime(&sttime);
         	int hour = tim->tm_hour;          // hour (0-23)  
         	int mon  = tim->tm_mon + 1;       // month (0-11)  
         	int mday = tim->tm_mday;          // day of the month (1-31)  
-        	int year = tim->tm_year % 100;    // years since 1900  
-   			zbx_snprintf(buffer,sizeof(buffer),"%04d-%02d-%02d_%02d.log",
+        	int year = tim->tm_year+ 1900 ;    // years since 1900  
+   			zbx_snprintf(filename, sizeof(filename),"/tmp/%04d%02d%02d%02d.log",
    				year,
    				mon,
    				mday,
    				hour);
-   			zbx_snprintf(tmpStr,sizeof(tmpStr), "%s%s", tmpStr, filename);
 	        FILE  *fp2;
-	        fp2 = fopen(tmpStr,"a+");
+	        fp2 = fopen(filename,"a+");
 	 
 	        switch (value_type)
 	{
